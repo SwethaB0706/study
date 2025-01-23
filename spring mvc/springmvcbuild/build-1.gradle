@@ -1,0 +1,100 @@
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+
+project.version = "1.0"
+
+try {
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+        	executable = 'svn'
+    	args = ['info']
+    	standardOutput = os
+        }
+        def outputAsString = os.toString()
+	        def revision = outputAsString =~ /Revision: (\d+)/
+        project.ext.svnRevision =  revision[0][1]
+    }
+    
+    
+    project.version = project.version + "-${svnRevision}"
+    } catch (Exception e) {
+}
+
+
+configurations  {
+    // provided dependency for yigo artifacts
+    provided {
+        description = 'provided classpath'
+        transitive = true
+    }
+
+    compile {    
+        extendsFrom provided
+    }
+
+    runtime {
+        exclude module: 'log4j'
+    }
+}
+
+
+repositories {
+    //mavenCentral()
+    maven {
+        url 'http://1.1.9.4:9000/nexus/content/groups/public'
+    }
+}
+
+
+dependencies {
+    compile 'org.elasticsearch:elasticsearch:1.1.0'
+    compile 'org.elasticsearch:elasticsearch-query-access-control-filter:1.5'
+    compile 'com.itextpdf:itextpdf:5.5.1'
+    runtime 'org.elasticsearch:elasticsearch-analysis-smartcn:2.1.0'
+    provided fileTree(dir: "${yigoDeploy}/WEB-INF/lib",
+    	include: '*.jar',
+    	excludes: ['lucene-*.jar', 'elasticsearch-*', "${project.name}*"])
+    provided fileTree(dir: "${yigoDeploy}/WEB-INF/lib/@deprecated", include: '*.jar' )
+}
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': project.name, 'Implementation-Version': version
+    }
+}
+
+
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.java
+}
+
+
+artifacts { archives sourcesJar }
+
+
+task dist(type: Zip, dependsOn: 'jar') {
+    into("${dist.baseName}-${dist.version}/Config") {
+    	from('Config/') {
+            include '**/*'
+            exclude '.svn'
+        }
+    }
+
+    into("${dist.baseName}-${dist.version}/Config/Module/SCM/Java/jar/ServerJars") {
+        from (configurations.runtime.files - configurations.provided.files)
+        from jar.archivePath
+    }
+}
+
+task uploadDist(type: Exec, dependsOn: 'dist') {
+    executable = (System.getProperty('os.name') =~ '[Ww]indows' ? 'pscp' : 'scp')
+    args = [dist.archivePath, "root@1.1.2.154:/software/${project.name}"]
+}

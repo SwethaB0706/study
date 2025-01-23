@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: Spring-Boot-Basics
+session-planner:
+  topics:
+    - { title: Spring boot, duration: 120 }
+    - { title: Kafka, duration: 120 }
+    - title: Functional programming with Erlang
+      duration: 60
+    - title: Concurrency on the JVM
+      duration: 60
+    - title: Virtual threads
+      duration: 45
+    - title: Scala Tricks
+      duration: 45
+    - title: Groovy on Grails
+      duration: 90
+    - title: Goroutines
+      duration: 90
+
+sessions:
+  topics:
+    60:
+      - Functional programming with Erlang
+      - Concurrency on the JVM
+    45:
+      - Scala Tricks
+      - Goroutines
+    90:
+      - Spring unit testing
+      - RoR
+

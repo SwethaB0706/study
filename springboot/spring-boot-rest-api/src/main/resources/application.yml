@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-boot-rest-api
+welcome:
+  message: hiiiiiiiii
+
+server:
+  port: 8081
+

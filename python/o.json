@@ -1,0 +1,219 @@
+{
+  "timestamp": "2025-01-05T07:47:36.805Z",
+  "projectType": "python",
+  "auditType": "sonatype-ossindex",
+  "dependencies": [
+    {
+      "packageName": "flask",
+      "version": "0.10.1",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2018-1000656",
+          "title": "[CVE-2018-1000656] CWE-20: Improper Input Validation",
+          "description": "The Pallets Project flask version Before 0.12.3 contains a CWE-20: Improper Input Validation vulnerability in flask that can result in Large amount of memory usage possibly leading to denial of service. This attack appear to be exploitable via Attacker provides JSON data in incorrect encoding. This vulnerability appears to have been fixed in 0.12.3. NOTE: this may overlap CVE-2019-1010083.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2018-1000656 for details",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2019-1010083",
+          "title": "[CVE-2019-1010083] CWE-noinfo",
+          "description": "The Pallets Project Flask before 1.0 is affected by: unexpected memory usage. The impact is: denial of service. The attack vector is: crafted encoded JSON data. The fixed version is: 1. NOTE: this may overlap CVE-2018-1000656.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2019-1010083 for details",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2023-30861",
+          "title": "[CVE-2023-30861] CWE-539: Information Exposure Through Persistent Cookies",
+          "description": "Flask is a lightweight WSGI web application framework. When all of the following conditions are met, a response containing data intended for one client may be cached and subsequently sent by the proxy to other clients. If the proxy also caches `Set-Cookie` headers, it may send one client's `session` cookie to other clients. The severity depends on the application's use of the session and the proxy's behavior regarding cookies. The risk depends on all these conditions being met.\n\n1. The application must be hosted behind a caching proxy that does not strip cookies or ignore responses with cookies.\n2. The application sets `session.permanent = True`\n3. The application does not access or modify the session at any point during a request.\n4. `SESSION_REFRESH_EACH_REQUEST` enabled (the default).\n5. The application does not set a `Cache-Control` header to indicate that a page is private or should not be cached.\n\nThis happens because vulnerable versions of Flask only set the `Vary: Cookie` header when the session is accessed or modified, not when it is refreshed (re-sent to update the expiration) without being accessed or modified. This issue has been fixed in versions 2.3.2 and 2.2.5.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2023-30861 for details",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "packageName": "jinja2",
+      "version": "2.7.3",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2016-10745",
+          "title": "[CVE-2016-10745] CWE-134: Use of Externally-Controlled Format String",
+          "description": "In Pallets Jinja before 2.8.1, str.format allows a sandbox escape.",
+          "cvssScore": 8.6,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2020-28493",
+          "title": "[CVE-2020-28493] CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "This affects the package jinja2 from 0.0.0 and before 2.11.3. The ReDoS vulnerability is mainly due to the `_punctuation_re regex` operator and its use of multiple wildcards. The last wildcard is the most exploitable as it searches for trailing punctuation. This issue can be mitigated by Markdown to format user content instead of the urlize filter, or by implementing request timeouts and limiting process memory.",
+          "cvssScore": 5.3,
+          "severity": "MEDIUM"
+        },
+        {
+          "id": "CVE-2024-22195",
+          "title": "[CVE-2024-22195] CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "description": "Jinja is an extensible templating engine. Special placeholders in the template allow writing code similar to Python syntax. It is possible to inject arbitrary HTML attributes into the rendered HTML template, potentially leading to Cross-Site Scripting (XSS). The Jinja `xmlattr` filter can be abused to inject arbitrary HTML attribute keys and values, bypassing the auto escaping mechanism and potentially leading to XSS. It may also be possible to bypass attribute validation checks if they are blacklist-based.\n",
+          "cvssScore": 6.1,
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "packageName": "markupsafe",
+      "version": "0.23",
+      "vulnerabilities": []
+    },
+    {
+      "packageName": "werkzeug",
+      "version": "0.9.6",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2016-10516",
+          "title": "[CVE-2016-10516] CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "description": "Cross-site scripting (XSS) vulnerability in the render_full function in debug/tbtools.py in the debugger in Pallets Werkzeug before 0.11.11 (as used in Pallets Flask and other products) allows remote attackers to inject arbitrary web script or HTML via a field that contains an exception message.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2016-10516 for details",
+          "cvssScore": 6.1,
+          "severity": "MEDIUM"
+        },
+        {
+          "id": "CVE-2019-14322",
+          "title": "[CVE-2019-14322] CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+          "description": "In Pallets Werkzeug before 0.15.5, SharedDataMiddleware mishandles drive names (such as C:) in Windows pathnames.",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2020-28724",
+          "title": "[CVE-2020-28724] CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
+          "description": "Open redirect vulnerability in werkzeug before 0.11.6 via a double slash in the URL.",
+          "cvssScore": 6.1,
+          "severity": "MEDIUM"
+        },
+        {
+          "id": "CVE-2023-23934",
+          "title": "[CVE-2023-23934] CWE-20: Improper Input Validation",
+          "description": "Werkzeug is a comprehensive WSGI web application library. Browsers may allow \"nameless\" cookies that look like `=value` instead of `key=value`. A vulnerable browser may allow a compromised application on an adjacent subdomain to exploit this to set a cookie like `=__Host-test=bad` for another subdomain. Werkzeug prior to 2.2.3 will parse the cookie `=__Host-test=bad` as __Host-test=bad`. If a Werkzeug application is running next to a vulnerable or malicious subdomain which sets such a cookie using a vulnerable browser, the Werkzeug application will see the bad cookie value but the valid cookie key. The issue is fixed in Werkzeug 2.2.3.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2023-23934 for details",
+          "cvssScore": 3.5,
+          "severity": "LOW"
+        },
+        {
+          "id": "CVE-2023-25577",
+          "title": "[CVE-2023-25577] CWE-770: Allocation of Resources Without Limits or Throttling",
+          "description": "Werkzeug is a comprehensive WSGI web application library. Prior to version 2.2.3, Werkzeug's multipart form data parser will parse an unlimited number of parts, including file parts. Parts can be a small amount of bytes, but each requires CPU time to parse and may use more memory as Python data. If a request can be made to an endpoint that accesses `request.data`, `request.form`, `request.files`, or `request.get_data(parse_form_data=False)`, it can cause unexpectedly high resource usage. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. The amount of RAM required can trigger an out of memory kill of the process. Unlimited file parts can use up memory and file handles. If many concurrent requests are sent continuously, this can exhaust or kill all available workers. Version 2.2.3 contains a patch for this issue.",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2023-46136",
+          "title": "[CVE-2023-46136] CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "Werkzeug is a comprehensive WSGI web application library. If an upload of a file that starts with CR or LF and then is followed by megabytes of data without these characters: all of these bytes are appended chunk by chunk into internal bytearray and lookup for boundary is performed on growing buffer. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. This vulnerability has been patched in version 3.0.1.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2023-46136 for details",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2024-34069",
+          "title": "[CVE-2024-34069] CWE-352: Cross-Site Request Forgery (CSRF)",
+          "description": "Werkzeug is a comprehensive WSGI web application library. The debugger in affected versions of Werkzeug can allow an attacker to execute code on a developer's machine under some circumstances. This requires the attacker to get the developer to interact with a domain and subdomain they control, and enter the debugger PIN, but if they are successful it allows access to the debugger even if it is only running on localhost. This also requires the attacker to guess a URL in the developer's application that will trigger the debugger. This vulnerability is fixed in 3.0.3.",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2024-49766",
+          "title": "[CVE-2024-49766] CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+          "description": "Werkzeug is a Web Server Gateway Interface web application library. On Python < 3.11 on Windows, os.path.isabs() does not catch UNC paths like //server/share. Werkzeug's safe_join() relies on this check, and so can produce a path that is not safe, potentially allowing unintended access to data. Applications using Python >= 3.11, or not using Windows, are not vulnerable. Werkzeug version 3.0.6 contains a patch.",
+          "cvssScore": 6.3,
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "packageName": "gnureadline",
+      "version": "6.3.3",
+      "vulnerabilities": []
+    },
+    {
+      "packageName": "itsdangerous",
+      "version": "0.24",
+      "vulnerabilities": []
+    },
+    {
+      "packageName": "rauth",
+      "version": "0.7.0",
+      "vulnerabilities": []
+    },
+    {
+      "packageName": "requests",
+      "version": "2.3.0",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2015-2296",
+          "title": "[CVE-2015-2296] CWE-Other",
+          "description": "The resolve_redirects function in sessions.py in requests 2.1.0 through 2.5.3 allows remote attackers to conduct session fixation attacks via a cookie without a host value in a redirect.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2015-2296 for details",
+          "cvssScore": 6.8,
+          "severity": "MEDIUM"
+        },
+        {
+          "id": "CVE-2018-18074",
+          "title": "[CVE-2018-18074] CWE-522: Insufficiently Protected Credentials",
+          "description": "The Requests package before 2.20.0 for Python sends an HTTP Authorization header to an http URI upon receiving a same-hostname https-to-http redirect, which makes it easier for remote attackers to discover credentials by sniffing the network.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2018-18074 for details",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2023-32681",
+          "title": "[CVE-2023-32681] CWE-200: Information Exposure",
+          "description": "Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `rebuild_proxies` to reattach the `Proxy-Authorization` header to requests. For HTTP connections sent through the tunnel, the proxy will identify the header in the request itself and remove it prior to forwarding to the destination server. However when sent over HTTPS, the `Proxy-Authorization` header must be sent in the CONNECT request as the proxy has no visibility into the tunneled request. This results in Requests forwarding proxy credentials to the destination server unintentionally, allowing a malicious actor to potentially exfiltrate sensitive information. This issue has been patched in version 2.31.0.\n\n",
+          "cvssScore": 6.1,
+          "severity": "MEDIUM"
+        },
+        {
+          "id": "CVE-2024-35195",
+          "title": "[CVE-2024-35195] CWE-670: Always-Incorrect Control Flow Implementation",
+          "description": "Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0.",
+          "cvssScore": 5.6,
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "packageName": "wsgiref",
+      "version": "0.1.2",
+      "vulnerabilities": []
+    },
+    {
+      "packageName": "gunicorn",
+      "version": "18.0",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2018-1000164",
+          "title": "[CVE-2018-1000164] CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')",
+          "description": "gunicorn version 19.4.5 contains a CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers vulnerability in \"process_headers\" function in \"gunicorn/http/wsgi.py\" that can result in an attacker causing the server to return arbitrary HTTP headers. This vulnerability appears to have been fixed in 19.5.0.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2018-1000164 for details",
+          "cvssScore": 7.5,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2024-1135",
+          "title": "[CVE-2024-1135] CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling')",
+          "description": "Gunicorn fails to properly validate Transfer-Encoding headers, leading to HTTP Request Smuggling (HRS) vulnerabilities. By crafting requests with conflicting Transfer-Encoding headers, attackers can bypass security restrictions and access restricted endpoints. This issue is due to Gunicorn's handling of Transfer-Encoding headers, where it incorrectly processes requests with multiple, conflicting Transfer-Encoding headers, treating them as chunked regardless of the final encoding specified. This vulnerability allows for a range of attacks including cache poisoning, session manipulation, and data exposure.",
+          "cvssScore": 8.2,
+          "severity": "HIGH"
+        },
+        {
+          "id": "CVE-2024-6827",
+          "title": "[CVE-2024-6827] CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling')",
+          "description": "gunicorn - HTTP Request/Response Smuggling",
+          "cvssScore": 8.2,
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "packageName": "flask-sslify",
+      "version": "0.1.4",
+      "vulnerabilities": []
+    }
+  ],
+  "summary": {
+    "totalDependencies": 11,
+    "vulnerableDependencies": 5,
+    "totalVulnerabilities": 21
+  }
+}

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: calculator-consumer
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      security.protocol: PLAINTEXT
+      SASL_MECHANISM: PLAIN
+server:
+  port: 8085

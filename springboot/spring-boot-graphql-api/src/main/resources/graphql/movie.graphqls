@@ -1,0 +1,12 @@
+type Movie {
+    id: ID!
+    title: String!
+    year: Int!
+    ratings: [Rating]
+    actors: [String]
+}
+
+type Rating {
+    source: String,
+    value: String
+}

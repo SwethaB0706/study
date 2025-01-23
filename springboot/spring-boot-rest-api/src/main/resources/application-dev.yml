@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-boot-rest-api
+welcome:
+  message: Welcome to default Square API
+
+server:
+  port: 8081
+

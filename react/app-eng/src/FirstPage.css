@@ -1,0 +1,96 @@
+.main-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  overflow: hidden;
+  /* background-image: url('D:\data\official\react\app-eng\public\images\flower.jpg'); Change this URL to your desired background image */
+  background-size: cover; /* Cover the entire background */
+  background-position: center; /* Center the image */
+}
+.images-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0; /* Initial opacity for fade-in effect */
+}
+
+.bg-image {
+  width: 33.33%; /* Adjust based on the grid layout */
+  height: 33.33%;
+  object-fit: cover;
+  opacity: 50; /* Adjust for overlay effect */
+}
+.centered-o-positive {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.o-positive {
+  font-size: 30px;
+  color: rgb(0, 191, 255);
+  display: flex;
+}
+
+.o-positive .letter {
+  opacity: 0;
+}
+
+.page-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* Add transparency for better visibility of text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+}
+
+.directors-container {
+  position: relative;
+  display: inline-block;
+}
+
+.directors {
+  font-size: 80px;
+  position: fixed;
+  display: flex;
+  cursor: pointer;
+  bottom: 10px;
+  left: 40px;
+  font-family: "Thunder Black", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+.director-letter {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: white;
+}
+
+
+
+
+
+.indium-top-left {
+  position: absolute;
+  top: -30px;
+  left: -60px;
+  font-size: 20px;
+  color: rgb(0, 191, 255);
+}

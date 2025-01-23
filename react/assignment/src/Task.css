@@ -1,0 +1,28 @@
+.option-container {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: relative;
+}
+
+.sub-option-container {
+    margin-left: 20px;
+    margin-top: 0px;
+    position: relative;
+}
+
+.sub-option {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0px;
+    position: relative;
+    padding: 0px;
+}
+
+.sub-option::before {
+    content: "L";
+    font-size: 30px;
+    margin-right: 1.0px;
+    font-weight: bold;
+    display: inline-block;
+}
